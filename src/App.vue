@@ -6,17 +6,27 @@
 
 <script>
 export default {
-  name: 'App'
-}
+  name: "App"
+};
 </script>
 
-<style>
+<style lang="less">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  height: 100%;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  > .ac {
+    //app-child的简写。app的直接子元素height为100%，就是每一个view的高度。
+    height: 100%;
+    > .dcw {
+      //default-content-wrapper的简写。
+      height: 100%;
+    }
+  }
 }
+
+@import url("./common/less/base.less");
 </style>
