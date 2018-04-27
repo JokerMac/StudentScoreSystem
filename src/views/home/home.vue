@@ -7,7 +7,7 @@
                 <el-button type="primary" icon="el-icon-setting" size="medium" :autofocus=true :disabled="true" @click="gotoSetting()">设置</el-button>
             </el-header>
             <el-container>
-                <el-aside>Aside</el-aside>
+                <el-aside id="test">Aside</el-aside>
                 <el-main>Main</el-main>
             </el-container>
         </el-container>
