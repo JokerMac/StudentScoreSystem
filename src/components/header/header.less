@@ -1,10 +1,35 @@
-@header-height: 80px;
+@import url("~@/common/less/variable.less");
 .header {
-  .header-content {
+    color: #333;
+    text-align: left;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: @header-height;
     line-height: @header-height;
-    font-size: 14px;
-    color: #f00;
-    background-color: #ccc;
-  }
+    background-color: @header-bg-color;
+    .header-content {
+        border-bottom: solid 1px @border-color;
+    }
+    .logo-wrapper,
+    .middle-area {
+        display: inline-block;
+        vertical-align: top;
+        height: 100%;
+        border-bottom: none;
+    }
+    .middle-area {
+        margin-left: 150px;
+    }
+    .logo {
+        font-size: 18px;
+        color: #36a2cd;
+        font-weight: bold;
+    }
+    .middle-area {
+        .el-menu-item:hover {
+            background-color: transparent;
+        }
+    }
 }
