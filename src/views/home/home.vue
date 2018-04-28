@@ -1,13 +1,13 @@
 <template>
     <div class="home ac">
         <el-container class="dcw">
-            <el-header height="80px">
-                Header头部
-                <!-- <i class="el-icon-setting">设置</i> -->
-                <el-button type="primary" icon="el-icon-setting" size="medium" :autofocus=true :disabled="true" @click="gotoSetting()">设置</el-button>
-            </el-header>
-            <el-container>
-                <el-aside id="test">Aside</el-aside>
+            <!-- <i class="el-icon-setting">设置</i> -->
+            <!-- <el-button type="primary" icon="el-icon-setting" size="medium" :autofocus=true :disabled="true" @click="gotoSetting()">设置</el-button> -->
+            <app-header></app-header>
+
+            <el-container class="content-wrapper">
+                <!-- <el-aside class="left-nav">Aside</el-aside> -->
+                <app-aside class="left-nav"></app-aside>
                 <el-main>Main</el-main>
             </el-container>
         </el-container>

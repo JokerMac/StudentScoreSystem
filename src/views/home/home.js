@@ -1,11 +1,13 @@
-// import header from '@/components/header/header.vue';
+import header from '@/components/header/header.vue';
+import aside from '@/components/aside/aside.vue';
 import {Loading} from 'element-ui';
 import { Message } from 'element-ui';
 export default {
     name: 'home',
-    // components: {
-    //     'app-header': header
-    // },
+    components: {
+        'app-header': header,
+        'app-aside': aside
+    },
     data() {
         return {};
     },
@@ -29,7 +31,7 @@ export default {
         //     loadingInstance.close();
         // });
         
-        let msgInstance=Message({type:'success',message:'提示信息',duration:2000,center:true});
+        // let msgInstance=Message({type:'success',message:'提示信息',duration:2000,center:true});
         //Loading,Message,MessageBox,Notification,NavMenu（用于左侧菜单）,Tabs标签页（可动态增减标签页）,Breadcrumb面包屑,
         //Dropdown下拉菜单（用在右侧登录头像那里）,Steps步骤条（可用于放置时间）,Dialog 对话框,Tooltip 文字提示,Popover 弹出框（与Tooltip类似）
         //Card 卡片（可以用来做菜单食谱），Carousel 走马灯，
