@@ -4,6 +4,7 @@ import Router from 'vue-router';
 //@ 等价于 /src 这个目录，避免写麻烦又易错的相对路径
 import login from '@/views/login/login.vue';
 import home from '@/views/home/home.vue';
+import booklist from '@/views/library/booklist/booklist.vue';
 
 Vue.use(Router);
 
@@ -17,7 +18,14 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: home
+      component: home,
+      children:[
+        {
+          path: 'library/booklist',
+          name: 'booklist',
+          component: booklist
+        }
+      ]
     }
   ]
 })
