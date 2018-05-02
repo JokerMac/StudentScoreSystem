@@ -33,6 +33,10 @@
                     <i class="el-icon-setting"></i>
                     <span slot="title">系统管理</span>
                 </el-menu-item>
+                <el-menu-item index="5">
+                    <i class="el-icon-setting"></i>
+                    <span slot="title">通知</span>
+                </el-menu-item>
             </el-menu>
         </el-aside>
     </div>
