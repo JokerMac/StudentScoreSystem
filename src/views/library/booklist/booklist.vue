@@ -1,5 +1,5 @@
 <template>
-  <div class="book-list">
+  <div class="booklist">
     <el-table :data="userList" stripe fit style="width: 100%">
       <el-table-column fixed prop="id" label="ID" min-width="150">
       </el-table-column>
