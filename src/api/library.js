@@ -2,8 +2,9 @@ import axios from 'axios';
 
 import { Message } from 'element-ui';
 
+
 const service = axios.create({
-    baseURL: 'src/testData',
+    baseURL: 'http://jsonplaceholder.typicode.com',
     timeout: 5000
 });
 
@@ -20,18 +21,13 @@ service.interceptors.response.use(
     }
 );
 
-// export 
+export const getBookList = () => {
+    return service.get('/users').then(res => res.data);
+};
 
-export const getBookList = params => {
-    return service.get('/booklist.json', params).then(res => res.data);
-}
-
-// alert(getBookList);
 
 let api = {
     getBookList
-}
-
-// alert(api.getBookList);
+};
 
 export default api;

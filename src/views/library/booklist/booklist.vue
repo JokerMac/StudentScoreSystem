@@ -1,42 +1,19 @@
 <template>
   <div class="book-list">
-    书单
-      <!-- <el-table
-    :data="tableData3"
-    style="width: 100%"
-    height="250">
-    <el-table-column
-      fixed
-      prop="date"
-      label="日期"
-      width="150">
-    </el-table-column>
-    <el-table-column
-      prop="name"
-      label="姓名"
-      width="120">
-    </el-table-column>
-    <el-table-column
-      prop="province"
-      label="省份"
-      width="120">
-    </el-table-column>
-    <el-table-column
-      prop="city"
-      label="市区"
-      width="120">
-    </el-table-column>
-    <el-table-column
-      prop="address"
-      label="地址"
-      width="300">
-    </el-table-column>
-    <el-table-column
-      prop="zip"
-      label="邮编"
-      width="120">
-    </el-table-column>
-  </el-table> -->
+    <el-table :data="userList" stripe fit style="width: 100%">
+      <el-table-column fixed prop="id" label="ID" min-width="150">
+      </el-table-column>
+      <el-table-column prop="name" label="姓名" min-width="120">
+      </el-table-column>
+      <el-table-column prop="username" label="用户名" min-width="120">
+      </el-table-column>
+      <el-table-column prop="email" label="邮箱" min-width="120">
+      </el-table-column>
+      <el-table-column prop="phone" label="电话" min-width="300">
+      </el-table-column>
+      <el-table-column prop="website" label="网址" min-width="120">
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 
@@ -47,4 +24,4 @@ export default {
 };
 </script>
 
-<style src="./booklist.less"  lang="less" scoped></style>
+<style src="./booklist.less" lang="less" scoped></style>
