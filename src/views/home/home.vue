@@ -8,7 +8,7 @@
             <el-container class="content-wrapper">
                 <!-- <el-aside class="left-nav">Aside</el-aside> -->
                 <app-aside class="left-nav"></app-aside>
-                <el-main>Main
+                <el-main>
                     <router-view></router-view>
                 </el-main>
             </el-container>
