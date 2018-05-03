@@ -5,6 +5,7 @@ import Router from 'vue-router';
 import login from '@/views/login/login.vue';
 import home from '@/views/home/home.vue';
 import booklist from '@/views/library/booklist/booklist.vue';
+import borrowRecord from '@/views/library/borrow-record/borrow-record.vue';
 
 Vue.use(Router);
 
@@ -21,11 +22,16 @@ export default new Router({
       component: home,
       children:[
         {
-          path: 'library/booklist',
+          path: '/library/booklist',
           name: 'booklist',
           component: booklist
+        },
+        {
+          path: '/library/borrowRecord/:userId',
+          name: 'borrowRecord',
+          component: borrowRecord
         }
       ]
     }
   ]
-})
+});
