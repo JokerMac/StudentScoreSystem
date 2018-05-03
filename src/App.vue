@@ -28,5 +28,6 @@ export default {
   }
 }
 
-@import url("./common/less/base.less");
+@import url("~@/common/less/base.less");
+@import url("~@/views/base.less");
 </style>
