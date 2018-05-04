@@ -1,20 +1,23 @@
 <template>
   <div class="borrow-record">
-      借阅记录
-    <!-- <el-table :data="userList" stripe fit style="width: 100%">
-      <el-table-column fixed prop="id" label="ID" min-width="150">
-      </el-table-column>
-      <el-table-column prop="name" label="姓名" min-width="120">
-      </el-table-column>
-      <el-table-column prop="username" label="用户名" min-width="120">
-      </el-table-column>
-      <el-table-column prop="email" label="邮箱" min-width="120">
-      </el-table-column>
-      <el-table-column prop="phone" label="电话" min-width="300">
-      </el-table-column>
-      <el-table-column prop="website" label="网址" min-width="120">
-      </el-table-column>
-    </el-table> -->
+    <p>借书的用户id是：{{userId}}</p>
+    <el-row class="book-list-wrapper">
+      <el-col :span="4" v-for="(item, index) in picList" :key="index" :offset="1">
+        <el-card>
+          <!-- <img :src="item.url" class="image"> -->
+          <img src="@/assets/logo.png" class="image">
+          <div class="book-desc-wrapper">
+            <div class="bottom">
+              <p class="title text-dot" :title=item.title>{{ item.title }}</p>
+              <time class="time">{{ currentDate }}</time>
+              <div class="btn-wrapper clearfix">
+                <el-button type="text" class="button">查看明细</el-button>
+              </div>
+            </div>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
