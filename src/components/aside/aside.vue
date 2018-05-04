@@ -30,7 +30,7 @@
                     <span slot="title">用户列表</span>
                 </el-menu-item>
                 <el-menu-item index="4">
-                    <i class="el-icon-setting"></i>
+                    <i class="el-icon-tickets"></i>
                     <span slot="title">系统管理</span>
                 </el-menu-item>
                 <el-menu-item index="5">

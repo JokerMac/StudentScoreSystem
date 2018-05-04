@@ -360,6 +360,14 @@
      overflow: auto;
  }
 
+ /* text-overflow */
+ .text-dot {
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
  /* visibility */
  .vh {
      visibility: hidden;

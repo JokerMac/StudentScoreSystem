@@ -25,6 +25,9 @@ export const getBookList = () => {
     return service.get('/users').then(res => res.data);
 };
 
+export const getPhotos=()=>{
+    return service.get('/photos').then(res=>res.data);
+};
 
 let api = {
     getBookList
