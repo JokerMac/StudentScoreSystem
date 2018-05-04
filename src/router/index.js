@@ -11,27 +11,37 @@ Vue.use(Router);
 
 export default new Router({
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'login',
-    //   component: login
-    // },
     {
       path: '/',
+      name: 'login',
+      component: login
+    },
+    {
+      path: '/home',
       name: 'home',
       component: home,
+      // redirect:'/home/library/booklist'，//当路径为home的时候，重定向到/home/library/booklist，相当于设置默认子路由。
       children:[
         {
-          path: '/library/booklist',
+          path: 'library/booklist',
           name: 'booklist',
           component: booklist
         },
         {
-          path: '/library/borrowRecord/:userId',
+          path: 'library/borrowRecord/:userId',
           name: 'borrowRecord',
           component: borrowRecord
         }
+        // {//当/home匹配成功时渲染的组件，根据需要添加。
+        //   path: '',
+        //   name: 'borrowRecord',
+        //   component: borrowRecord
+        // }
       ]
+    },
+    {
+      path:'*',
+      redirect:'/'//404重定向
     }
   ]
 });
