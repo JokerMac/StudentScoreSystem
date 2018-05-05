@@ -1,7 +1,7 @@
 <template>
     <div class="login">
-        <app-header></app-header>
-        登录
+        <!-- <app-header></app-header> -->
+        <div class="login-pannel" style="margin-top:80px;font-size:30px;">登录</div>
     </div>
 </template>
 
