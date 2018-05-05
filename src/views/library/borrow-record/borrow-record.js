@@ -2,17 +2,16 @@ import {getPhotos} from '@/api/library.js';
 
 export default {
     name: "borrow-record",
+    props:['userId'],
     data() {
         return {
             currentDate: new Date(),
-            picList:[],
-            userId:''
+            picList:[]
         };
     },
     methods: {
     },
     created(){
-        this.userId=this.$route.params.userId;//获取地址栏传过来的参数
         const cur=this;
         getPhotos()
         .then(function(data){
