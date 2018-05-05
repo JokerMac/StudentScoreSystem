@@ -6,13 +6,14 @@ import login from '@/views/login/login.vue';
 import home from '@/views/home/home.vue';
 import booklist from '@/views/library/booklist/booklist.vue';
 import borrowRecord from '@/views/library/borrow-record/borrow-record.vue';
+import pageNotFound from '@/views/404.vue';
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/login',
       name: 'login',
       component: login
     },
@@ -20,7 +21,7 @@ export default new Router({
       path: '/home',
       name: 'home',
       component: home,
-      // redirect:'/home/library/booklist'，//当路径为home的时候，重定向到/home/library/booklist，相当于设置默认子路由。
+      redirect:'/home/library/booklist',//当路径为home的时候，重定向到/home/library/booklist，相当于设置默认子路由。
       children:[
         {
           path: 'library/booklist',
@@ -30,18 +31,24 @@ export default new Router({
         {
           path: 'library/borrowRecord/:userId',
           name: 'borrowRecord',
-          component: borrowRecord
-        }
+          component: borrowRecord,
+          props: true//props被设置为 true，route.params将会被设置为组件属性。
+        },
         // {//当/home匹配成功时渲染的组件，根据需要添加。
         //   path: '',
-        //   name: 'borrowRecord',
-        //   component: borrowRecord
+        //   name: 'booklist',
+        //   component: booklist
         // }
       ]
     },
     {
+      path:'/404',
+      name:'404',
+      component: pageNotFound
+    },
+    {
       path:'*',
-      redirect:'/'//404重定向
+      redirect:'/404'//404重定向
     }
   ]
 });
