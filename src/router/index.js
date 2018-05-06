@@ -10,8 +10,12 @@ import pageNotFound from '@/views/404.vue';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   routes: [
+    {
+      path: '/',
+      redirect: '/login'
+    },
     {
       path: '/login',
       name: 'login',
@@ -21,8 +25,11 @@ export default new Router({
       path: '/home',
       name: 'home',
       component: home,
-      redirect:'/home/library/booklist',//当路径为home的时候，重定向到/home/library/booklist，相当于设置默认子路由。
-      children:[
+      redirect: '/home/library/booklist',//当路径为home的时候，重定向到/home/library/booklist，相当于设置默认子路由。
+      meta: {
+        auth: true
+      },
+      children: [
         {
           path: 'library/booklist',
           name: 'booklist',
@@ -42,13 +49,25 @@ export default new Router({
       ]
     },
     {
-      path:'/404',
-      name:'404',
+      path: '/404',
+      name: '404',
       component: pageNotFound
     },
     {
-      path:'*',
-      redirect:'/404'//404重定向
+      path: '*',
+      redirect: '/404'//404重定向
     }
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  //匹配到的路由里有需要登录验证的，则跳转到登录页面。
+  const needAuth = (to.matched.findIndex((item) => { return item.meta.auth === true }) > -1) ? true : false;
+  if (needAuth) {//需要验证，分为已经登录了和未登录的情况。已登录直接跳转到指定页面，未登录则跳转到login页面。
+    next({ path: '/login', replace: true });
+  } else {
+    next();
+  }
+});
+
+export default router;
