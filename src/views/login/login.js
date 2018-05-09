@@ -25,44 +25,31 @@ export default {
       if (value === '') {
         callback(new Error('请输入账号'));
       } else {
-        if (this.ruleFormModel.checkPass !== '') {
-          this.$refs.ruleFormModel.validateField('checkPass');
-        }
+        // if (this.ruleFormModel.checkPass !== '') {
+        //   this.$refs.ruleFormModel.validateField('checkAccount');
+        // }
         callback();
       }
     };
-    var validatePass = (rule, value, callback) => {
+    var validatePassword = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('请输入密码'));
       } else {
-        if (this.ruleFormModel.checkPass !== '') {
-          this.$refs.ruleFormModel.validateField('checkPass');
-        }
         callback();
       }
     };
-    // var validatePass2 = (rule, value, callback) => {
-    //   if (value === '') {
-    //     callback(new Error('请再次输入密码'));
-    //   } else if (value !== this.ruleFormModel.pass) {
-    //     callback(new Error('两次输入密码不一致!'));
-    //   } else {
-    //     callback();
-    //   }
-    // };
+
     return {
       ruleFormModel: {
-        account: '',
-        pass: ''
-        // checkPass: '',
-        // age: ''
+        account: 'admin',
+        password: '123456'
       },
       rules: {
-        checkAccount: [
+        account: [
           { validator: validateAccount, trigger: 'blur' }
         ],
-        checkPassword: [
-          { validator: validatePass, trigger: 'blur' }
+        password: [
+          { validator: validatePassword, trigger: 'blur' }
         ]
         // checkPass: [
         //   { validator: validatePass2, trigger: 'blur' }
@@ -75,10 +62,12 @@ export default {
   },
   methods: {
     submitForm(formName) {
-      debugger;
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('submit!');
+          // alert('submit!');
+          if (this.ruleFormModel.account === 'admin' && this.ruleFormModel.password === '123456') {
+            alert('登录成功');
+          }
         } else {
           // console.log('error submit!!');
           return false;

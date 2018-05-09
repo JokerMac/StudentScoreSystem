@@ -6,10 +6,10 @@
       <div class="content-wrapper">
         <el-form label-position="left" :model="ruleFormModel" status-icon :rules="rules" ref="ruleFormRef" label-width="60px" class="demo-ruleForm" size="medium">
           <el-form-item label="账号：" prop="account">
-            <el-input type="password" v-model="ruleFormModel.account" auto-complete="off" class="user-input"></el-input>
+            <el-input type="text" v-model="ruleFormModel.account" auto-complete="off" class="user-input" placeholder="admin"></el-input>
           </el-form-item>
-          <el-form-item label="密码：" prop="pass">
-            <el-input type="password" v-model="ruleFormModel.pass" auto-complete="off" class="user-input"></el-input>
+          <el-form-item label="密码：" prop="password">
+            <el-input type="password" v-model="ruleFormModel.password" auto-complete="off" class="user-input"  placeholder="123456"></el-input>
           </el-form-item>
           <!-- <el-form-item label="确认密码" prop="checkPass">
             <el-input type="password" v-model="ruleFormModel.checkPass" auto-complete="off"></el-input>
