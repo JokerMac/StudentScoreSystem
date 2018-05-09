@@ -23,7 +23,7 @@ export default {
     // };
     var validateAccount = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('请输入密码'));
+        callback(new Error('请输入账号'));
       } else {
         if (this.ruleFormModel.checkPass !== '') {
           this.$refs.ruleFormModel.validateField('checkPass');
@@ -58,10 +58,10 @@ export default {
         // age: ''
       },
       rules: {
-        account: [
+        checkAccount: [
           { validator: validateAccount, trigger: 'blur' }
         ],
-        pass: [
+        checkPassword: [
           { validator: validatePass, trigger: 'blur' }
         ]
         // checkPass: [
