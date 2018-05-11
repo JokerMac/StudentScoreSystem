@@ -1,26 +1,14 @@
 import header from '@/components/header/header.vue';
+// import {each} from '@/common/js/store.js';
+// import {get} from '@/common/js/store.js';
+// import store from '@/common/js/store.js';
+
 export default {
   name: 'login',
   components: {
     'app-header': header
   },
   data() {
-    // var checkAge = (rule, value, callback) => {
-    //   if (!value) {
-    //     return callback(new Error('年龄不能为空'));
-    //   }
-    //   setTimeout(() => {
-    //     if (!Number.isInteger(value)) {
-    //       callback(new Error('请输入数字值'));
-    //     } else {
-    //       if (value < 18) {
-    //         callback(new Error('必须年满18岁'));
-    //       } else {
-    //         callback();
-    //       }
-    //     }
-    //   }, 1000);
-    // };
     var validateAccount = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('请输入账号'));
@@ -62,14 +50,19 @@ export default {
   },
   methods: {
     submitForm(formName) {
+      const cur=this;
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          // alert('submit!');
           if (this.ruleFormModel.account === 'admin' && this.ruleFormModel.password === '123456') {
-            alert('登录成功');
+            if(cur.$route.query.redirect){
+              debugger;
+              this.$router.replace({path:cur.$route.query.redirect});
+            }else{
+              debugger;
+              this.$router.replace({ name: 'booklist' });
+            }
           }
         } else {
-          // console.log('error submit!!');
           return false;
         }
       });
