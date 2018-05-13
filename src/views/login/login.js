@@ -1,7 +1,6 @@
 import header from '@/components/header/header.vue';
-// import {each} from '@/common/js/store.js';
-// import {get} from '@/common/js/store.js';
-// import store from '@/common/js/store.js';
+import { login } from '@/api/login.js';
+import store from '@/common/js/store.js';
 
 export default {
   name: 'login',
@@ -50,17 +49,22 @@ export default {
   },
   methods: {
     submitForm(formName) {
-      const cur=this;
+      const cur = this;
       this.$refs[formName].validate((valid) => {
         if (valid) {
           if (this.ruleFormModel.account === 'admin' && this.ruleFormModel.password === '123456') {
-            if(cur.$route.query.redirect){
-              debugger;
-              this.$router.replace({path:cur.$route.query.redirect});
-            }else{
-              debugger;
-              this.$router.replace({ name: 'booklist' });
-            }
+            return login()
+              .then(data => {
+                store.set('token', data.token);
+                if (cur.$route.query.redirect) {
+                  this.$router.replace({ path: cur.$route.query.redirect });
+                } else {
+                  this.$router.replace({ name: 'booklist' });
+                }
+              })
+              .catch(err => {
+
+              });
           }
         } else {
           return false;
