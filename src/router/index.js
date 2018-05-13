@@ -29,9 +29,7 @@ const router = new Router({
       component: home,
       redirect: '/home/library/booklist',//当路径为home的时候，重定向到/home/library/booklist，相当于设置默认子路由。
       meta: {
-        auth: true
-        // requireAuth
-        // auth: false
+        requireAuth: true
       },
       children: [
         {
@@ -65,21 +63,19 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  // store.set('token','0aeedfvaasdfeicnvbiado');
   //匹配到的路由里有需要登录验证的，则跳转到登录页面。
-  const needAuth = (to.matched.findIndex((item) => { return item.meta.auth === true }) > -1) ? true : false;
+  const needAuth = (to.matched.findIndex((item) => { return item.meta.requireAuth === true }) > -1) ? true : false;
   if (needAuth) {//需要验证，分为已经登录了（有token且token未过期）和未登录的情况。已登录直接跳转到指定页面，未登录则跳转到login页面。
-    let token=store.get('token');
-    debugger;
-    if(!!token){//token有效，直接进入该页面
+    let token = store.get('token');
+    if (token) {//token有效，直接进入该页面
       next();
-    }else{//token无效，进入登录页面，登录成功后再进入该页面
+    } else {//token无效，进入登录页面，登录成功后再进入该页面
       // next({ path: '/login', replace: true });
-      next({ 
+      next({
         path: '/login',
-        query: { 
-          redirect: to.fullPath 
-        } 
+        query: {
+          redirect: to.fullPath
+        }
       });
     }
   } else {
