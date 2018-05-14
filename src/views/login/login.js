@@ -1,11 +1,11 @@
 import header from '@/components/header/header.vue';
 import { login } from '@/api/login.js';
-import store from '@/common/js/store.js';
+import localStore from '@/common/js/local-store.js';
 
 export default {
   name: 'login',
   components: {
-    'app-header': header
+    'app-header': header  
   },
   data() {
     var validateAccount = (rule, value, callback) => {
@@ -55,7 +55,7 @@ export default {
           if (this.ruleFormModel.account === 'admin' && this.ruleFormModel.password === '123456') {
             return login()
               .then(data => {
-                store.set('token', data.token);
+                localStore.set('token', data.token);
                 if (cur.$route.query.redirect) {
                   this.$router.replace({ path: cur.$route.query.redirect });
                 } else {

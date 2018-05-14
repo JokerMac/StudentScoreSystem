@@ -8,7 +8,7 @@ import booklist from '@/views/library/booklist/booklist.vue';
 import borrowRecord from '@/views/library/borrow-record/borrow-record.vue';
 import pageNotFound from '@/views/404.vue';
 
-import store from '@/common/js/store.js';
+import localStore from '@/common/js/local-store.js';
 
 Vue.use(Router);
 
@@ -66,7 +66,7 @@ router.beforeEach((to, from, next) => {
   //匹配到的路由里有需要登录验证的，则跳转到登录页面。
   const needAuth = (to.matched.findIndex((item) => { return item.meta.requireAuth === true }) > -1) ? true : false;
   if (needAuth) {//需要验证，分为已经登录了（有token且token未过期）和未登录的情况。已登录直接跳转到指定页面，未登录则跳转到login页面。
-    let token = store.get('token');
+    let token = localStore.get('token');
     if (token) {//token有效，直接进入该页面
       next();
     } else {//token无效，进入登录页面，登录成功后再进入该页面

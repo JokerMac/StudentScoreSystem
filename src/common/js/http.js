@@ -1,5 +1,5 @@
 import axios from 'axios';
-import store from '@/common/js/store.js';
+import localStore from '@/common/js/local-store.js';
 import { Message } from 'element-ui';
 
 
@@ -10,7 +10,7 @@ const http = axios.create({
 
 http.interceptors.request.use(
     config => {
-        let token = store.get('token');
+        let token = localStore.get('token');
         if (token) {
             config.headers['token'] = token;//每个请求的头部信息都带上token。key值可自定义。
         }
@@ -37,7 +37,7 @@ http.interceptors.response.use(
                 case 401:
                     // 401 未授权 清除token信息并跳转到登录页面
                     // store.commit(types.LOGOUT);
-                    store.remove('token');
+                    localStore.remove('token');
                     router.replace({
                         path: 'login',
                         query: { redirect: router.currentRoute.fullPath }
