@@ -1,6 +1,7 @@
 import header from '@/components/header/header.vue';
 import { login } from '@/api/login.js';
 import localStore from '@/common/js/local-store.js';
+import * as types from '@/vuex/mutation-types.js';
 
 export default {
   name: 'login',
@@ -55,6 +56,7 @@ export default {
           if (this.ruleFormModel.account === 'admin' && this.ruleFormModel.password === '123456') {
             return login()
               .then(data => {
+                this.$store.commit(types.LOGIN);
                 localStore.set('token', data.token);
                 if (cur.$route.query.redirect) {
                   this.$router.replace({ path: cur.$route.query.redirect });
