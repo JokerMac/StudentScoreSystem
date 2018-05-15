@@ -10,6 +10,7 @@
     line-height: @header-height;
     background-color: @header-bg-color;
     .header-content {
+        min-width: 750px;
         border-bottom: solid 1px @border-color;
     }
     .logo-wrapper,
@@ -31,5 +32,33 @@
         .el-menu-item:hover {
             background-color: transparent;
         }
+    }
+    .right-area {
+        float: right;
+    }
+}
+
+@user-logo-h: @header-height - 10;
+.header-user-logo-wrapper {
+    float: right;
+    height: @header-height;
+    padding-top: (@header-height - @user-logo-h)/2;
+}
+
+.header-user-logo {
+    height: @user-logo-h;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.header-dropdown-menu {
+    margin-top: 0;
+    padding: 3px 0;
+}
+
+.header-logout {
+    margin-top: 0;
+    &::before {
+        height: 0;
     }
 }

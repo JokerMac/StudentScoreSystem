@@ -1,6 +1,6 @@
 <template>
     <div class="header">
-        <el-header class="header-content">
+        <el-header class="header-content cf">
             <div class="logo-wrapper">
                 <a href="" class="logo">后台管理系统BMS</a>
             </div>
@@ -24,6 +24,17 @@
                     <!-- <a href="https://www.ele.me" target="_blank">关于</a> -->
                 </el-menu-item>
             </el-menu>
+
+            <el-dropdown class="right-area"  @command="handleCommand" :hide-timeout=500>
+                <div class="el-dropdown-link header-user-logo-wrapper">
+                    <img src="./img/user-default-icon.jpg" alt='头像' class="header-user-logo">
+                </div>
+                <el-dropdown-menu slot="dropdown" class="header-dropdown-menu">
+                    <el-dropdown-item command="personal-info">个人信息</el-dropdown-item>
+                    <el-dropdown-item command="setting">设置</el-dropdown-item>
+                    <el-dropdown-item divided class="header-logout" command="logout">退出登录</el-dropdown-item>
+                </el-dropdown-menu>
+            </el-dropdown>
         </el-header>
     </div>
 </template>
