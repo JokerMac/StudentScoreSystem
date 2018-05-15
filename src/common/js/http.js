@@ -1,7 +1,7 @@
 import axios from 'axios';
 import localStore from '@/common/js/local-store.js';
 import { Message } from 'element-ui';
-
+import * as types from '@/vuex/mutation-types.js';
 
 const http = axios.create({
     baseURL: 'http://jsonplaceholder.typicode.com',
@@ -36,8 +36,7 @@ http.interceptors.response.use(
             switch (error.response.status) {
                 case 401:
                     // 401 未授权 清除token信息并跳转到登录页面
-                    // store.commit(types.LOGOUT);
-                    localStore.remove('token');
+                    this.$store.commit(types.LOGOUT);
                     router.replace({
                         path: 'login',
                         query: { redirect: router.currentRoute.fullPath }
