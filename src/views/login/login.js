@@ -6,7 +6,7 @@ import * as types from '@/vuex/mutation-types.js';
 export default {
   name: 'login',
   components: {
-    'app-header': header  
+    'app-header': header
   },
   data() {
     var validateAccount = (rule, value, callback) => {
@@ -56,8 +56,7 @@ export default {
           if (this.ruleFormModel.account === 'admin' && this.ruleFormModel.password === '123456') {
             return login()
               .then(data => {
-                this.$store.commit(types.LOGIN);
-                localStore.set('token', data.token);
+                this.$store.commit(types.LOGIN,{token:data.token});
                 if (cur.$route.query.redirect) {
                   this.$router.replace({ path: cur.$route.query.redirect });
                 } else {
