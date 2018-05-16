@@ -28,6 +28,7 @@ export default {
     };
 
     return {
+      rememberFlag: true,
       ruleFormModel: {
         account: 'admin',
         password: '123456'
@@ -53,14 +54,23 @@ export default {
       const cur = this;
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          if (this.ruleFormModel.account === 'admin' && this.ruleFormModel.password === '123456') {
+          const account = cur.ruleFormModel.account;
+          const password = cur.ruleFormModel.password;
+          if (account === 'admin' && password === '123456') {
             return login()
               .then(data => {
-                this.$store.commit(types.LOGIN,{token:data.token});
-                if (cur.$route.query.redirect) {
-                  this.$router.replace({ path: cur.$route.query.redirect });
+                let storeData;
+                if (cur.rememberFlag) {
+                  storeData = { token: data.token, account: account, password: password };
                 } else {
-                  this.$router.replace({ name: 'booklist' });
+                  storeData = { token: data.token };
+                }
+                this.$store.commit(types.LOGIN, storeData);
+
+                if (cur.$route.query.redirect) {
+                  cur.$router.replace({ path: cur.$route.query.redirect });
+                } else {
+                  cur.$router.replace({ name: 'booklist' });
                 }
               })
               .catch(err => {
