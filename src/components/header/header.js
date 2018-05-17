@@ -11,13 +11,13 @@ export default {
     handleSelect(key, keyPath) {
       // console.log(key, keyPath);
     },
-    handleCommand(command){
-      switch(command){
+    handleCommand(command) {
+      switch (command) {
         case 'personal-info':
-        alert('pi');
+          alert('pi');
           break;
         case 'setting':
-        alert('setting');
+          this.$router.push({ path: '/setting' });
           break;
         case 'logout':
           this.$store.commit(types.LOGOUT);
