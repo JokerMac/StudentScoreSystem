@@ -3,6 +3,7 @@ import Router from 'vue-router';
 // import HelloWorld from '@/components/HelloWorld.vue';
 //@ 等价于 /src 这个目录，避免写麻烦又易错的相对路径
 import login from '@/views/login/login.vue';
+import setting from '@/views/setting/setting.vue';
 import home from '@/views/home/home.vue';
 import booklist from '@/views/library/booklist/booklist.vue';
 import borrowRecord from '@/views/library/borrow-record/borrow-record.vue';
@@ -23,6 +24,14 @@ const router = new Router({
       path: '/login',
       name: 'login',
       component: login
+    },
+    {
+      path: '/setting',
+      name: 'setting',
+      component: setting,
+      meta: {
+        requireAuth: true
+      },
     },
     {
       path: '/home',
