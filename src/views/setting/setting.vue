@@ -1,10 +1,10 @@
 <template>
     <div class="setting ac">
-        <app-header>
+        <app-header :defaultMenuIsShow="false" :defaultActiveIndex="'3'">
             <template slot="other-menu-items">
-                <el-menu-item index="4">常见问题1</el-menu-item>
-                <el-menu-item index="5">常见问题2</el-menu-item>
-                <el-menu-item index="6">常见问题3</el-menu-item>
+                <el-menu-item index="1">常见问题1</el-menu-item>
+                <el-menu-item index="2">常见问题2</el-menu-item>
+                <el-menu-item index="3">常见问题3</el-menu-item>
             </template>
         </app-header>
         <div class="dcw">

@@ -5,7 +5,7 @@
                 <a href="" class="logo">后台管理系统BMS</a>
             </div>
             <el-menu :default-active="activeIndex" class="middle-area" mode="horizontal" @select="handleSelect">
-                <template v-if="true">
+                <template v-if="defaultMenuIsShow">
                     <el-menu-item index="1">首页</el-menu-item>
                     <!-- <el-submenu index="2">
                 <template slot="title">我的工作台</template>
