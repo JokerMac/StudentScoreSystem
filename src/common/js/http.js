@@ -3,6 +3,21 @@ import localStore from '@/common/js/local-store.js';
 import { Message } from 'element-ui';
 import * as types from '@/vuex/mutation-types.js';
 
+/**
+ * axios使用教程
+ * https://www.kancloud.cn/yunye/axios/234845
+ * TODO：请求错误catch后的全局处理。
+ */
+
+const showErrorMsg = (err, msgDuration = 5 * 1000, msgType = 'error') => {
+    console.error(err);
+    Message({
+        message: err.message,
+        type: msgType,
+        duration: msgDuration
+    });
+};
+
 const http = axios.create({
     baseURL: 'http://jsonplaceholder.typicode.com',
     timeout: 10000
@@ -17,12 +32,7 @@ http.interceptors.request.use(
         return config;
     },
     error => {
-        console.error('err: ' + error);
-        Message({
-            Message: error.Message,
-            type: 'error',
-            duration: 5 * 1000
-        });
+        showErrorMsg(error);
         return Promise.reject(error);
     }
 );
@@ -43,21 +53,11 @@ http.interceptors.response.use(
                     });
                     break;
                 default:
-                    console.error('err: ' + error);
-                    Message({
-                        Message: error.Message,
-                        type: 'error',
-                        duration: 5 * 1000
-                    });
+                    showErrorMsg(error);
                     break;
             }
         } else {
-            console.error('err: ' + error);
-            Message({
-                Message: error.Message,
-                type: 'error',
-                duration: 5 * 1000
-            });
+            showErrorMsg(error);
         }
         return Promise.reject(error);
     }
