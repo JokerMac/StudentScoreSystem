@@ -4,6 +4,7 @@ import Router from 'vue-router';
 //@ 等价于 /src 这个目录，避免写麻烦又易错的相对路径
 import login from '@/views/login/login.vue';
 import setting from '@/views/setting/setting.vue';
+import helpCenter from '@/views/help-center/help-center.vue';
 import home from '@/views/home/home.vue';
 import booklist from '@/views/library/booklist/booklist.vue';
 import borrowRecord from '@/views/library/borrow-record/borrow-record.vue';
@@ -31,6 +32,14 @@ const router = new Router({
       component: setting,
       meta: {
         requireAuth: true
+      },
+    },
+    {
+      path: '/helpCenter',
+      name: 'helpCenter',
+      component: helpCenter,
+      meta: {
+        requireAuth: false
       },
     },
     {
