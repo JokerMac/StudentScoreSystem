@@ -61,9 +61,15 @@ export default {
         default:
           break;
       }
+    },
+    updateActiveMenu() {//修复经过刷新或者回退以后，头部导航栏的选中项与实际页面不匹配的问题。
+      this.activeIndex = this.menuObj[this.$route.name];
     }
   },
-  mounted() {//dom挂载完成，解决刷新页面以后，导航栏的选中项错误的问题。
-    this.activeIndex = this.menuObj[this.$route.name];
+  mounted() {//dom挂载完成，解决【刷新页面】以后，导航栏的选中项错误的问题。
+    this.updateActiveMenu();
+  },
+  updated() {//【直接输入路径及按键操作（后退按钮）】时调用，修复导航栏的选中项错误的问题。
+    this.updateActiveMenu();
   }
 };
