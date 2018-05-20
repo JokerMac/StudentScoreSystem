@@ -5,6 +5,7 @@ import Router from 'vue-router';
 import login from '@/views/login/login.vue';
 import setting from '@/views/setting/setting.vue';
 import helpCenter from '@/views/help-center/help-center.vue';
+import about from '@/views/about/about.vue';
 import home from '@/views/home/home.vue';
 import booklist from '@/views/library/booklist/booklist.vue';
 import borrowRecord from '@/views/library/borrow-record/borrow-record.vue';
@@ -32,15 +33,20 @@ const router = new Router({
       component: setting,
       meta: {
         requireAuth: true
-      },
+      }
     },
     {
       path: '/helpCenter',
       name: 'helpCenter',
       component: helpCenter,
       meta: {
-        requireAuth: false
-      },
+        requireAuth: false//不需要登录即可访问的页面，可以通过添加requireAuth: false控制。也可以不添加，直接默认就是不需要登录即可访问。
+      }
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: about
     },
     {
       path: '/home',
