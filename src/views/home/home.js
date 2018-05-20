@@ -1,11 +1,9 @@
-import header from '@/components/header/header.vue';
 import aside from '@/components/aside/aside.vue';
 import {Loading} from 'element-ui';
 import { Message } from 'element-ui';
 export default {
     name: 'home',
     components: {
-        'app-header': header,
         'app-aside': aside
     },
     data() {

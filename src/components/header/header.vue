@@ -25,6 +25,10 @@
                         <!-- <a href="https://www.ele.me" target="_blank">关于</a> -->
                     </el-menu-item>
                 </template>
+
+                <template v-if="$route.name==='setting'">
+                    <el-menu-item index="4">常见问题</el-menu-item>
+                </template>
                 <slot name="other-menu-items"></slot>
             </el-menu>
 

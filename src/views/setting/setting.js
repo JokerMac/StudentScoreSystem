@@ -1,9 +1,9 @@
-import header from '@/components/header/header.vue';
+// import header from '@/components/header/header.vue';
 
 export default {
     name: 'setting',
     components: {
-        'app-header': header
+        // 'app-header': header
     },
     data() {
         return {

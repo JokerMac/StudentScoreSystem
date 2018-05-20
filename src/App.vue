@@ -1,12 +1,28 @@
 <template>
   <div id="app">
+    <app-header v-if="isHeaderShow"></app-header>
     <router-view/>
   </div>
 </template>
 
 <script>
+import header from "@/components/header/header.vue";
 export default {
-  name: "App"
+  name: "App",
+  components: {
+    "app-header": header
+  },
+  data() {
+    return {};
+  },
+  computed: {
+    isHeaderShow: function() {//控制头部是否显示，放在data()中无法根据路由进行实时更新。
+      if (this.$route.name === "login") {
+        return false;
+      }
+      return true;
+    }
+  }
 };
 </script>
 

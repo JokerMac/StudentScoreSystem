@@ -1,6 +1,5 @@
 <template>
     <div class="home ac">
-        <app-header></app-header>
         <el-container class="dcw">
             <!-- <i class="el-icon-setting">设置</i> -->
             <!-- <el-button type="primary" icon="el-icon-setting" size="medium" :autofocus=true :disabled="true" @click="gotoSetting()">设置</el-button> -->
