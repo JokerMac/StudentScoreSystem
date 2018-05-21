@@ -9,9 +9,9 @@
                     </template>
                     <el-menu-item-group>
                         <!-- <template slot="title">分组一</template> -->
-                        <el-menu-item index="1-1" @click="gotoBooklist()" id="1-1">书籍列表</el-menu-item>
-                        <el-menu-item index="1-2" @click="gotoBorrowRecord()" id="1-2">借阅记录</el-menu-item>
-                        <el-menu-item index="1-3" id="1-3">添加书籍</el-menu-item>
+                        <el-menu-item index="1-1" @click="gotoView('1-1')" id="1-1">书籍列表</el-menu-item>
+                        <el-menu-item index="1-2" @click="gotoView('1-2')" id="1-2">借阅记录</el-menu-item>
+                        <el-menu-item index="1-3" @click="gotoView('1-3')" id="1-3">添加书籍</el-menu-item>
                     </el-menu-item-group>
                     <!-- <el-menu-item-group title="分组2">
                         <el-menu-item index="1-3">选项3</el-menu-item>

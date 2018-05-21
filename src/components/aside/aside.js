@@ -1,4 +1,4 @@
-// import router from 'vue-router';
+import { Message } from 'element-ui';
 
 export default {
     name: "app-aside",
@@ -8,7 +8,8 @@ export default {
             userId: '1234',
             menuObj: {
                 'booklist': '1-1',
-                'borrowRecord': '1-2'
+                'borrowRecord': '1-2',
+                'addBook': '1-3'
             }
         };
     },
@@ -19,12 +20,26 @@ export default {
         handleClose(key, keyPath) {
             console.log(key, keyPath);
         },
-        gotoBooklist() {
-            this.$router.push({ name: 'booklist' });
-        },
-        gotoBorrowRecord() {
-            // this.$router.push({ path: `library/borrowRecord/${userId}` });
-            this.$router.push({ name: 'borrowRecord', params: { userId: this.userId } });
+        gotoView(viewIndex) {
+            switch (viewIndex) {
+                case '1-1':
+                    this.$router.push({ name: 'booklist' });
+                    break;
+                case '1-2':
+                    // this.$router.push({ path: `library/borrowRecord/${userId}` });
+                    this.$router.push({ name: 'borrowRecord', params: { userId: this.userId } });
+                    break;
+                case '1-3':
+                    this.$router.push({ name: 'addBook' });
+                    break;
+                default:
+                    Message({
+                        message: '没有找到相应的页面，请与管理员联系~',
+                        type: 'error',
+                        duration: 5000
+                    });
+                    break;
+            }
         },
         updateActiveMenuItem() {//修复经过刷新或者回退以后，头部导航栏的选中项与实际页面不匹配的问题。
             this.activeIndex = this.menuObj[this.$route.name];

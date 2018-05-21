@@ -10,6 +10,7 @@ import about from '@/views/about/about.vue';
 import home from '@/views/home/home.vue';
 import booklist from '@/views/library/booklist/booklist.vue';
 import borrowRecord from '@/views/library/borrow-record/borrow-record.vue';
+import addBook from '@/views/library/add-book/add-book.vue';
 import pageNotFound from '@/views/404.vue';
 
 import localStore from '@/common/js/local-store.js';
@@ -77,6 +78,11 @@ const router = new Router({
           component: borrowRecord,
           props: true//props被设置为 true，route.params将会被设置为组件属性。
         },
+        {
+          path: 'library/addBook',
+          name: 'addBook',
+          component: addBook
+        }
         // {//当/home匹配成功时渲染的组件，根据需要添加。
         //   path: '',
         //   name: 'booklist',
