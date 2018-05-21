@@ -49,7 +49,7 @@ export default {
     handleCommand(command) {
       switch (command) {
         case 'personal-info':
-          alert('pi');
+          this.$router.push({ path: '/personalInfo' });
           break;
         case 'setting':
           this.$router.push({ path: '/setting' });
